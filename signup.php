@@ -72,8 +72,8 @@ if(isset($_POST['signup']))
     </head>
 
     <body>
-            <!--js link-->
-            <script src="script.js"></script>
+        <!--js link-->
+        <script src="script.js"></script>
                  
         <section class="signup">
 
@@ -157,21 +157,6 @@ if(isset($_POST['signup']))
             </div>
 
         </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <!--footer section-->
