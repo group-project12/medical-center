@@ -1,3 +1,52 @@
+<?php
+$fname="";
+$mname="";
+$lname="";
+$age="";
+$gender="";
+$pnumber="";
+$date="";
+$address1="";
+$address2="";
+$error=array();
+$congra="";
+
+//database connection
+
+$conn=mysqli_connect("localhost","root","","appointment");
+
+if(isset($_POST['submit']))
+{
+    $fname=mysqli_real_escape_string($conn,$_POST['fname']);
+    $mname=mysqli_real_escape_string($conn,$_POST['mname']);
+    $lname=mysqli_real_escape_string($conn,$_POST['lname']);
+    $age=mysqli_real_escape_string($conn,$_POST['age']);
+    $gender=mysqli_real_escape_string($conn,$_POST['gender']);
+    $pnumber=mysqli_real_escape_string($conn,$_POST['pnumber']);
+    $date=mysqli_real_escape_string($conn,$_POST['date']);
+    $address1=mysqli_real_escape_string($conn,$_POST['address1']);
+    $address2=mysqli_real_escape_string($conn,$_POST['address2']);
+
+    
+
+    $user_check_query="select * from patient where firstname = '$fname' or lastname='$lname' limit 1  ";
+    $result=mysqli_query($conn,$user_check_query);
+    $user=mysqli_fetch_assoc($result);
+
+   
+    isset($user['firstname']);
+
+    //rigister 
+    
+        if(count($error)===0)
+        {
+            $query="insert into patient (firstname,middlename,lastname,age,gender,phonenumber,date,address1,address2) values('$fname','$mname','$lname','$age','$gender','$pnumber','$date','$address1','$address');";
+            mysqli_query($conn,$query);
+            //$congra="You are successfully registerd!";
+        }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,29 +73,44 @@
                 <div class="image">
                     <img src="image/book-img.svg" alt="">
                 </div>
-        
-                <form action="">
+                <div class="err">
+                    <?php
+                        include 'err.php' ;
+                    ?>
+                </div>
+
+                <?php
+                    echo $congra ;
+                ?>
+                <form action="appointment.php" method="POST">
                     <h3>Book appointment</h3>
-                    <input type="text" placeholder="First name" class="box">
-                    <input type="text" placeholder="Middle name" class="box">
-                    <input type="text" placeholder="Last name" class="box">
-                    <input type="number" placeholder="Phone number" class="box">
-                    <input type="number" placeholder="Age" class="box">
+                    <input type="text" name="fname"  placeholder="First name" class="box">
+                    <input type="text" name="mname"  placeholder="Middle name" class="box">
+                    <input type="text"  name="lname" placeholder="Last name" class="box">
+                    <input type="number" name="pnumber"  placeholder="Phone number" class="box">
+                    <input type="number"  name="age" placeholder="Age" class="box">
 
-                    <div class="age">
-                         <input type="radio" placeholder="gender" > female
+                    <!-- <div class="age" name="gender" >
+                        <input type="radio" placeholder="gender" > female
                         <input type="radio" placeholder="gender"> male
-                    </div>
+                    </div> -->
 
-                    <input type="date" class="box">
+                    <div>
+                            <select name ="gender" placeholder="Gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+
+                    <input type="date" name="date" class="box">
                     <h6> Address</h6>
 
-                    <div class="col">
-                        <input type="text" placeholder="Country" class="box">
-                        <input type="text" placeholder="City" class="box">
+                    <div class="col"  >
+                        <input type="text" name="address1"  placeholder="Country" class="box">
+                        <input type="text" name="address2" placeholder="City" class="box">
                     </div>
-                    
-                    <input type="submit" value="Book appointment" class="btn">
+
+                    <input type="submit" name="submit" value="Book appointment" class="btn">
                 </form>
         
             </div>

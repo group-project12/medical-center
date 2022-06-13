@@ -8,13 +8,14 @@
 
     if(isset($_POST['login']))
     {
-        $fname=mysqli_real_escape_string($conn, $_POST['email']);
+
+        $email=mysqli_real_escape_string($conn, $_POST['email']);
         $password=mysqli_real_escape_string($conn, $_POST['password']);
     
         $sql="select * from user where email='".$email."' and password='".$password."' limit 1";
         $result=mysqli_query($conn,$sql);
 
-        if(empty($fname))
+        if(empty($email))
         {
             $eror="email is required ";
         }
@@ -22,7 +23,7 @@
         {
             $eror="password is required";
         }
-        else if(mysqli_num_rows($result==1))
+        else if(mysqli_num_rows($result))
         {
             header('appointment.php');
         }
@@ -68,7 +69,7 @@
                 echo $eror;?>
         </div>
 
-            <form action="login.php" method="post">
+            <form action="appointment.php" method="post">
 
                 <div class="cardtext">
                     <input type="email" name="email" required>
