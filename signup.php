@@ -37,14 +37,15 @@ if(isset($_POST['signup']))
     $result=mysqli_query($conn,$user_check_query);
     $user=mysqli_fetch_assoc($result);
 
-    if($user['firstname']===$fname)
-    {
-        array_push($error,"user name already exist");
-    }
-    else if($user['email']===$email)
-    {
-        array_push($error,"email already exist");
-    }
+    // if($user['firstname']===$fname)
+    // {
+    //     array_push($error,"user name already exist");
+    // }
+    // else if($user['email']===$email)
+    // {
+    //     array_push($error,"email already exist");
+    // }
+    isset($user['firstname']);
 
     //rigister 
     
@@ -74,13 +75,10 @@ if(isset($_POST['signup']))
     <body>
         <!--js link-->
         <script src="script.js"></script>
-                 
+
         <section class="signup">
-
             <div  class="bookingform">
-
                 <h2>Registration</h2>
-
                 <div class="err">
                     <?php
                         include 'err.php' ;
@@ -146,7 +144,6 @@ if(isset($_POST['signup']))
 
                     <div class="button">
                         <input type="submit" name="signup" value="Confirm">
-    
                     </div>
 
                     <div class="cardlog">Already have account  
@@ -157,7 +154,6 @@ if(isset($_POST['signup']))
             </div>
 
         </section>
-
 
         <!--footer section-->
 
@@ -211,5 +207,6 @@ if(isset($_POST['signup']))
         </section>
 
         <!-- footer section ends -->
+
     </body>
 </html>

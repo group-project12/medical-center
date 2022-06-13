@@ -35,7 +35,7 @@ body
 section{
     padding:2rem 5%;
 }
-section:nth-child(even){
+section:nth-child(odd){
     background: #f5f5f5;
 }
 .heading{
@@ -82,7 +82,7 @@ section:nth-child(even){
 }
 
 .header{
-    padding:2rem 9%;
+    padding:1.5rem 9%;
     position:fixed;
     top:0; left:0; right:0;
     z-index:1000;
@@ -121,15 +121,26 @@ section:nth-child(even){
     color:#fff;
     background:#002e25;
 }
+#buton span{
+    background:white;
+    color:#002e25;
+}
+
 
 
 /*home*/
+#home{
+    background-color:#effaf4;
+}
 .home{
     display:flex;
     align-items:center;
     flex-wrap:wrap;
     gap:1.5rem;
     padding-top:10rem;
+    padding-bottom: 1rem;
+
+   
 }
 .home .image{
     flex:1 1 45rem;
@@ -219,21 +230,149 @@ section:nth-child(even){
     line-height: 2;
 }
 
-/*contact secion*/
-.cont
+
+
+/* about*/
+
+#about {
+    background-color: #effaf4;
+    fill: rgb(255,255,255);
+  
+}
+
+.about .row{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:2rem;
+}
+
+.about .row .image{
+    flex:1 1 45rem;
+}
+
+.about .row .image img{
+    width: 100%;
+}
+
+.about .row .content{
+    flex:1 1 45rem;
+}
+
+.about .row .content h3{
+    color: var(--black);
+    text-shadow: var(--text-shadow);
+    font-size: 4rem;
+    line-height: 1.8;
+}
+
+.about .row .content p{
+    color: var(--light-color);
+    padding:1rem 0;
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
+#aboutfooter{
+ background-color: #f5f5f5;
+}
+
+
+/*Appointment*/
+#book{
+    background-color: #effaf4;  
+}
+.book .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:2rem;
+}
+ 
+.book .row .image{
+    flex:1 1 45rem;
+}
+
+.book .row .image img{
+    width: 120%;
+    background-color: #002e25;
+}
+
+.book .row form{
+    flex:1 1 45rem;
+    background: #fff;
+    border:var(--border);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.book .row form h3{
+    color:var(--black);
+    padding-bottom: 1rem;
+    font-size: 3rem;
+}
+
+.book .row form .box{
+    width: 100%;
+    margin:.7rem 0;
+    border-radius: .5rem;
+    border-bottom:var(--border);
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    padding: 1rem;
+}
+
+.book .row form .btn{
+    padding:1rem 4rem;
+}
+h6{
+    font-size: 2rem;
+    text-align: left;
+    color:var(--black);
+    opacity: 0.5;
+}
+.col{
+    display: flex;
+    gap:1rem;
+}
+.age{
+    font-size: 2rem;
+    text-align: left;
+    color:var(--black);
+    opacity: 0.7;
+    gap:1rem;
+
+}
+
+/*contact section*/
+#cont
 {
+    position:relative;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #f5f5f5;
+    background: #002e25;
     color:#002e25;
 } 
+#cont::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:50%;
+    height:100%;
+    background-color:#f5f5f5;
+
+}
 
 .contact
 {
     position: relative;
-    min-width: 1000px;
+    min-width: 1100px;
     min-height: 550px;
     display: flex;
     z-index: 1; 
@@ -244,7 +383,7 @@ section:nth-child(even){
     position: absolute;
     top: 40px;
     width:350px;
-    height: 85%; 
+    height: calc(100% - 80px); 
     background: #002e25;
     z-index: 1;
     padding: 40px;
@@ -252,7 +391,7 @@ section:nth-child(even){
     justify-content: center;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 20px 25px rgb(0,0,0,0.15);
+    box-shadow: 0 20px 25px rgb(0,0,0,0.2);
 } 
 
 .contact .contactinfo h2
@@ -294,13 +433,17 @@ section:nth-child(even){
 .contact .contactinfo ul li span i
 {
     padding-right: .5rem;
+    font-size:2.5rem;
     color:#fff;
 }
 .contact .contactinfo  a
 {
     padding-right: 2rem;
     color:#fff;
-    font-size: 2rem;
+    font-size: 3rem;
+}
+.contact .contactinfo  a:hover{
+    color:#111;
 }
 
 
@@ -310,7 +453,7 @@ section:nth-child(even){
     padding: 70px 50px;
     padding-left: 250px;
     margin-left: 150px;
-    width: 100%;
+    width:calc(100% - 150px);
     height: 100%;
     background: #fff;
     box-shadow: 0 50px 50px rgb(0,0,0,0.25);
@@ -318,38 +461,42 @@ section:nth-child(even){
 }
 .contact .contactform h2
 {
-    color: #0f3959;
-    font-size: 24px;
-    font-weight: 500;
+    color: #002e25;
+    font-size: 45px;
+    font-weight: 700;
 }
 .contact .contactform .form 
 {
-    position: relative;
+    position:relative;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content:space-between;
+    flex-wrap:wrap;
     padding-top: 30px;
+  
 }
 .contact .contactform .form .inputbox
 {
     position: relative;
-    margin-bottom: 35px;
+    margin: 0 0 35px 0 ;
 }
 
 .contact .contactform .form .inputbox .n1
 {
     width: 47%;
+  
 }
 .contact .contactform .form .inputbox .n2
 {
     width: 100%;
 }
+
+
 .contact .contactform .form .inputbox input,
 .contact .contactform .form .inputbox textarea
 {
     width: 100%;
-    resize: none;
     padding: 5px 0;
+    resize: none;
     font-size: 18px;
     font-weight: 300;
     color: #333;
@@ -360,7 +507,7 @@ section:nth-child(even){
 }   
 .contact .contactform .form .inputbox textarea
 {
-    height: 150px;
+    min-height: 120px;
 }
 .contact .contactform .form .inputbox span
 {
@@ -371,6 +518,7 @@ section:nth-child(even){
     font-size: 18px;
     font-weight: 300;
     transition: 0.3s;
+    pointer-events:none;
 
 }
 .contact .contactform .form .inputbox input:focus ~ span,
@@ -382,14 +530,14 @@ section:nth-child(even){
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 1px;
-    color: #095a55;
+    color: #002e25;
     font-weight: 500;
 }
 .contact .contactform .form .inputbox input[type="submit"]
 {
     position: relative;
     cursor: pointer;
-    background: #095a55;
+    background: #002e25;
     color: #fff;
     border: none;
     max-width: 150px;
@@ -649,188 +797,14 @@ input[type="submit"]
 
 
 
-/*admin page css*/
-.admin-container
-{
-    position: relative;
-    width: 100%;
-}
-.navigation 
-{
-    position: fixed;
-    width: 300px;
-    height: 100%;
-    background: #002e25;
-    transition: 0.5s;
-    overflow: hidden;
-}
-
-.navigation.active
-{
-    width: 60px;
-}
-
-.navigation ul
-{
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.navigation ul li
-{
-      position: relative;
-      width: 100%;
-      list-style: none;
-}
-.navigation ul li:hover
-{
-    background: #777;
-}
-
-.navigation ul li:nth-child(1)
-{
-    margin-bottom: 20px;
-}
-
-.navigation ul li:nth-child(1):hover
-{
-    background: transparent;
-
-}
-.navigation ul li a  
-{
-    position: relative;
-    display: block;
-    width: 100%;
-    display: flex;
-    text-decoration: none;
-    color: #eee;
-}
-.navigation ul li a  .icon
-{
-    position: relative;
-    display: block;
-    min-width: 60px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-}
-.navigation ul li a  .icon .fa
-{
-    color: #eee;
-    font-size: 24px;
-
-}
-.navigation ul li a .title
-{
-    position: relative;
-    display: block;
-    padding: 0 10px;
-    height: 60px;
-    line-height: 60px;
-    white-space: nowrap;
-}
-
-.main
-{
-    position: absolute;
-    width:calc(100% - 300px);
-    left: 300px;
-    min-height: 100vh;
-    background: #333;
-    transition: 0.5s;
-}
-.main.active
-{
-    width:calc(100% - 60px);
-    left: 60px;
-}
-.main .topbar
-{
-    width: 100%;
-    background: #eee;
-    height: 60px;
-    padding: 0 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-.toggle
-{
-    position: relative;
-    width:60px;
-    height: 60px;
-    cursor: pointer;
-}
-.toggle::before
-{
-    content: '\f0c9';
-    font-family: fontAwesome;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    line-height: 60px;
-    font-size: 24px;
-    text-align: center;
-    color: #111;
-
-}
 
 
-.search
-{
-    position: relative;
-    width: 400px;
-    margin: 0 10px;
-}
-
-.search label
-{
-    position: relative;
-    width: 100%;
-}
-.search label input
-{
-    width: 100%;
-    height: 40px;
-    border-radius:40px ;
-    padding: 5px 20px;
-    padding-left: 35px;
-    outline: none;
-    border: 1px solid rgba(0, 0, 0, .2);
-}
-.search label  .fa
-{
-    position: absolute;
-    left: 15px;
-    top: 4px;
-}
 
 
-.user
-{
-    position: relative;
-    min-width: 50px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-    
-}
-.user img
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 
-}
+
+
+
 
 
 
@@ -953,126 +927,3 @@ input[type="submit"]
     }
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* admin page sidebar  css*/
-/* .side-bar
-{
-    position:fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1000;
-    height: 100%;
-    width:30rem;
-    background-color:#314E52;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    text-align: center;
-}
-
-.side-bar .logo
-{
-    
-    height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size:4rem;
-    color: #eee; 
-
-}
-
-.side-bar li
-{
-    padding: 10px 40px;
-    display: flex;
-    align-items: center; 
-
-} 
-
-.side-bar li a
-{
-    display: block;
-    padding: 5px ;
-    background-color:#F7F6E7;
-    color: #314E52;
-    font-size: 16px;
-    
-}
-.side-bar li a i
-{
-    padding-right: .9rem;
-}
-
-/* admin page section css*/
-/* .admin-container
-{
-   
-    background: #777;
-    display: flex;
-    justify-content: center;
-    padding: 0 15rem;
-    flex-flow: column; 
-    text-align: left;
-    height: 100vh;
-
-}
-.admin-container .header
-
-{ 
-    position: fixed;
-    top: 0;
-    right:0;
-    width: 80vw;
-    height: 10vh;
-    color:n #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px 0 rgb(0,0,0,0.2);
-}
-.admin-container .header .user .btn
-{
- 
-    background: #002e25;
-    color: #eee;
-    padding: 5px 10px;
-    text-align: center;
-}
-
-.admin-container .header .user
-{
-    flex: 1;
-}
-.admin-container .header .user .imgdesign
-{
-    position: relative ;
-} */ 

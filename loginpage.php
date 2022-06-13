@@ -24,15 +24,13 @@
         }
         else if(mysqli_num_rows($result==1))
         {
-            header('location:contact.html');
+            header('appointment.php');
         }
         else
         {
             $eror="username or password incorrect";
         }
-    
     }
-
 ?>
 
 
@@ -41,6 +39,7 @@
 
 
  
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,19 +56,17 @@
 </head>
 
 <body background="image/image3..jpg">
-
-    <!--js link-->
-    <script src="script.js"></script>
-
-    <!--form section-->
-
-        <div class="login-form">
-            <h1>Login</h1>
+     <!--js link-->
+     <script src="script.js"></script>
+     
+     <!--form section-->
+     <div class="login-form">
+        <h1>Login</h1>
             
-            <div class="eror">
-                <?php
-                 echo $eror;?>
-            </div>
+        <div class="eror">
+            <?php
+                echo $eror;?>
+        </div>
 
             <form action="login.php" method="post">
 
@@ -92,8 +89,9 @@
                 <div class="cardsignup">Have not account?
                     <a href="signup.php">sign-in</a>
                 </div>
-
             </form>
+
         </div>
+        
     </body>
 </html

@@ -1,22 +1,40 @@
 <?php 
-if (isset($_POST['send']))
+$fname="";
+$lname="";
+$email="";
+$subject="";
+$message="";
+$error=array();
+$congra="";
+
+//database connection
+
+$conn=mysqli_connect("localhost","root","","contact");
+
+if(isset($_POST['send']))
 {
-    $fname=$_POST['fname'];
-    $lname=$_POST['lname'];
-    $email=$_POST['email'];
-    $pnumber=$_POST['pnumber'];
-    $message=$_POST['message'];
+    $fname=mysqli_real_escape_string($conn,$_POST['fname']);
+    $lname=mysqli_real_escape_string($conn,$_POST['lname']);
+    $email=mysqli_real_escape_string($conn,$_POST['email']);
+    $subject=mysqli_real_escape_string($conn,$_POST['subject']);
+    $message=mysqli_real_escape_string($conn,$_POST['message']);
+    
+   
+
+    $user_check_query="select * from customer where Firstname = '$fname' or Email='$email' limit 1  ";
+    $result=mysqli_query($conn,$user_check_query);
+    $user=mysqli_fetch_assoc($result);
 
 
-    $mailTo="solomeyemane53@gmail.com";
-    $headers="Form:".$email;
-    $text="you have receved an email from".$name.".\n\n".$message;
-
-    mail($mailTo,$text,$header);
-    header(("Location:contact.php?mailsend")); 
-
+    isset($user['firstname']);
+    //send
+        if(count($error)===0)
+        {
+            $query="insert into customer (Firstname,Lastname,Email,Subject,Message) values('$fname','$lname','$email','$subject','$message');";
+            mysqli_query($conn,$query);
+            $congra="Sent!";
+        }
 }
-
 
 ?>
 
@@ -39,9 +57,6 @@ if (isset($_POST['send']))
     <body>
             <!--js link-->
         <script src="script.js"></script>
-        
-   
-
 
         <!--contact section-->
         <section class="cont" id="cont">
@@ -80,7 +95,16 @@ if (isset($_POST['send']))
                 <div class="contactform">
 
                     <h2>Get in Touch</h2>
-                    <form action="contactform.php" method="post">
+                    <div class="err">
+                        <?php
+                            include 'err.php' ;
+                        ?>
+                    </div>
+
+                    <?php
+                        echo $congra ;
+                    ?>
+                    <form action="contact.php" method="post">
                         <div class="form">
 
                             <div class="inputbox n1">
@@ -99,8 +123,8 @@ if (isset($_POST['send']))
                             </div> 
 
                             <div class="inputbox n1">
-                                <input type="text" name="pnumber" required>
-                                <span>Phone Number</span>
+                                <input type="text" name="subject" required>
+                                <span>Subject</span>
                             </div>
 
                             <div class="inputbox n2 ">
@@ -123,6 +147,7 @@ if (isset($_POST['send']))
         </section>
 
         <!-- contact section end-->
+
 
         <!--footer section-->
         <section class="footer">
